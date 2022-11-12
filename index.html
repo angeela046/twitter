@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+    <title>Twitter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial--scale=1.0">
+
+</head>
+<body>  
+<div class="sidebar layout">
+  <img src="icons8-twitter-48(1).png" alt="logo">
+
+  <div class="sidebarlayout active">
+    <h2> <span class="material-icons">home</span>
+   <strong>Home</strong></h2>
+  </div>
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      numbers
+    </span>
+    <h2>Explore</h2>
+  </div>
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      notifications
+    </span>
+    <h2>Notifications</h2>
+  </div>  
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      mail_outline
+      </span>
+    <h2>Messages</h2>
+  </div>
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      bookmark
+    </span>
+    <h2>Bookmarks</h2>
+  </div>  
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      list
+    </span>
+    <h2>Lists</h2>
+  </div>
+
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      perm_identity
+    </span>
+    <h2>Profile</h2>
+  </div>  
+  <div class="sidebarlayout">
+    <span class="material-icons">
+      more_horiz
+    </span>      
+    <h2 class="moreBtn">More</h2>
+    <br>
+      <ul class="more" style="display: none;">
+        <li>Topics</li>
+      <li>Twitter Circle</li>
+    </ul>
+    
+  </div>
+  <button class="sidebar__tweet">Tweet</button>
+  <div class="accountinfo">
+      <img src="./myavatar.jpg" alt="Avatar icon"/>
+      <h4>Anjila Shrestha</h4>
+      <h5>nangelanjila</h5>
+      <span class="material-icons">
+        more_horiz
+      </span>
+  </div>
+  
+</div>
+<!-- sidebar ends -->
+
+<!-- feed starts -->
+<div class="feed">
+  <div class="feed__header">
+    <h4>Home</h4>
+</div>
+
+<!-- tweetbox starts-->
+<div class="TweetBox">
+  <form>
+    <div class="TweetBox__input">
+      <img src="./myavatar.jpg" alt="Avatar icon"/>
+      <input type="text" placeholder="What's Happening?" />
+    </div>
+    <button class="TweetBox__TweetButton">Tweet</button>
+  </form>    
+</div>  
+<!--tweetbox ends-->
+
+<div class="post-container">
+<!-- post  starts-->
+<div class="post">
+  <div class="post__avatar">
+    <img 
+      src="./myavatar.jpg" 
+      alt="Avatar icon"/>
+</div>
+
+  <div class="post__body">
+    <div class="post__header">
+      <div class="post__headerText">
+        <h3 class="profileName"></h3>
+          <span class="post__headerSpecial">@angelanjila-s .   Aug23
+            </span>
+      </div>
+      <div class="post__headerDescrip">
+        <p>GOOD TIMES+CRAZY FRIENDS=GREAT MEMORIES
+        .</p>
+      </div>
+    </div>
+    <img src="friends.jpg" alt="friends">
+    <div class="post__footer">
+      <span class="material-icons">
+         repeat 
+        </span>
+      <span class="material-icons">
+        favorite_border
+      </span>      
+      <span class="material-icons"> 
+        publish
+       </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- post  ends-->
+
+`
+</div>
+
+</div>
+<div class="widgets">
+  <div class="widgets__input">
+    <span class="material-icons widgets__searchIcon">
+      search
+    </span>
+    <input type="text" placeholder="Search Twitter">
+  </div>
+  <div>
+    <div class="widgets__widgetContainer">
+      <h2><strong>Trends for you</strong></h2>
+    </div>
+
+
+    <div class="information">
+      Trending in Nepal
+    </div>
+    <div class="trend-name">
+      #Tiktok
+    </div>
+    <div class="meta-information">
+   Sandip lamichanne Tweets
+    </div>
+    
+    <div class="information">
+      Trending in India
+    </div>
+    <div class="trend-name">
+      #IPL
+    </div>
+    <div class="meta-information">
+      1.8m Tweets
+    </div>
+
+    <div class="information">
+      Trending in China
+    </div>
+    <div class="trend-name">
+      #Drama
+    </div>
+    <div class="meta-information">
+      18k Tweets
+    </div>
+
+    <div class="information">
+      Trending in Canada
+    </div>
+    <div class="trend-name">
+      #Snow
+    </div>
+    <div class="meta-information">
+      9.6m Tweets
+    </div>
+
+    <div class="information">
+      Trending in Japan
+    </div>
+    <div class="trend-name">
+      #Anime
+    </div>
+    <div class="meta-information">
+      1.8m Tweets
+    </div>
+
+    <div class="information">
+      Trending in Qatar
+    </div>
+    <div class="trend-name">
+      #Worldcup
+    </div>
+    <div class="meta-information">
+      20.3m Tweets
+    </div>
+  </div>
+</div>
+//js//
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+  const  postContainer = document.querySelector(".post-container");
+  const postDiv = document.querySelector('.post')
+ setTimeout(function() {
+  fetch('https://634c0bb8317dc96a30901e94.mockapi.io/todo')
+.then((res)=>res.json())
+.then((responseJson)=>{
+  responseJson.forEach((item)=>{
+    const postDivClone = postDiv.cloneNode(true);
+
+    let name = postDivClone.querySelector(".profileName")
+    let text = postDivClone.querySelector(".post__headerDescrip > p")
+    let image = postDivClone.querySelector(".post__body img")
+
+
+    name.innerHtml = item.name;
+    text.innerHtml = item.text;
+    image.setAttribute('src', item.image)
+    console.log(name.innerHtml)
+
+    postContainer.appendChild(postDivClone)
+
+  })
+});
+ }, 500)
+$(document).ready(function() {
+  $(".moreBtn").click(function() {
+    $(".more").toggle();
+  });
+});
+
+
+</script>
+</body>
+</html>
